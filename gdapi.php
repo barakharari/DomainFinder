@@ -33,6 +33,9 @@
       $result = curl_exec($ch);
 
       $dn = json_decode($result, true);
+
+      //Make sure that the price is low, and the domain is available
+
       if ($dn['price'] <= 11990000 && $dn['available'] == 1){
         echo '<pre>';
         print_r($dn);
