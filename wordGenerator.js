@@ -68,24 +68,6 @@ function sendDomains(domainNames){
 function handleRelatedWords(relatedWords){
   var domains = [];
 
-  // for (var i = 0; i < 60; i++){ 
-  //   var name = ""
-  //   switch(rand(10)){
-  //     case 0:
-  //       name = keywords[rand(keywords.length)] + relatedWords[rand(relatedWords.length)]
-  //       break;
-  //     case 1:
-  //       name = relatedWords[rand(relatedWords.length)] + keywords[rand(keywords.length)]
-  //       break;
-  //     case 2:
-  //       name = relatedWords[rand(relatedWords.length)] + preps[rand(preps.length)] + keywords[rand(keywords.length)]
-  //       break;
-  //   }
-  //   domains.push(name);
-  // }
-
-  
-
   //RANDOM INSERTION
 
   while (domains.length < 60){
@@ -94,7 +76,7 @@ function handleRelatedWords(relatedWords){
       break;
     }
 
-    domains.push(relatedWords[rand(relatedWords.length)] + relatedWords[rand(relatedWords.length)])
+    domains.push(relatedWords[rand(relatedWords.length)] + relatedWords[rand(relatedWords.length)] + '.com')
   }
 
 
