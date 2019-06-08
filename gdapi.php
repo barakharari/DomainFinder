@@ -23,7 +23,7 @@
 
   if (isset($words)){
     $wordsArray = json_decode($words, true);
-    echo 'Data: ';
+
     for ($i = 0; $i <= sizeof($wordsArray); $i++){
       $name = $wordsArray[$i];
       $com = '.com';
@@ -41,8 +41,8 @@
         print_r($dn);
         echo '</pre>';
       }
-
     }
+
     curl_close($ch);
 
   } else{

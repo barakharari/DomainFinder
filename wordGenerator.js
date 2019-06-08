@@ -10,7 +10,6 @@ function processInput(){
   // Get a price range
 
   const keywordsString = document.getElementById("keywords").value
-  const querySizeString = document.getElementById("querySize").value
 
   keywords = keywordsString.split(" ");
   var index = 0
@@ -55,13 +54,15 @@ function sendDomains(domainNames){
     url: "gdapi.php",
     type: "post",
     data: {words: jsonString},
-    sucess: function(res){
+    success: function(res){
+      //Here you could organize the response from godaddy api
+      document.getElementById("results").innerHTML = res
     }
   });
 }
 
 ///////////////////////////////////////////
-//    MARK::Domain crafting function     //
+//    MARK::Domain creating function     //
 ///////////////////////////////////////////
 
 function handleRelatedWords(relatedWords){

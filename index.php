@@ -21,9 +21,10 @@
 
     <form id="form">
       Keywords: <br><input type="text" id="keywords"><br>
-      Query Size: <br><input type="text" id="querySize"><br><br>
       <input type="button" value = "Submit" onclick="processInput()">
     </form>
+
+    <br>
 
     <div id="results"></div>
   </body>
