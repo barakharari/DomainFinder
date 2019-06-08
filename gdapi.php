@@ -25,27 +25,15 @@
     
     $result = curl_exec($ch);  
     $dn = json_decode($result, true);
-    print_r($dn['domains']);
+    $info = $dn['domains'];
 
-    
-    // for ($i = 0; $i <= 10; $i++){
-    //   $name = $wordsArray[$i];
-    //   $com = '.com';
-    //   $domain = $name.$com;    // see GoDaddy API documentation - https://developer.godaddy.com/doc
-    //   $url = "https://api.godaddy.com/v1/domains/available?domain=".$domain;
-    //   curl_setopt($ch, CURLOPT_URL, $url);
-    //   $result = curl_exec($ch);
-
-    //   $dn = json_decode($result, true);
-
-    //   //Make sure that the price is low, and the domain is available
-
-    //   if ($dn['price'] <= 11990000 && $dn['available'] == 1){
-    //     echo '<pre>';
-    //     print_r($dn);
-    //     echo '</pre>';
-    //   }
-    //}
+    for ($i = 0; $i <= sizeof($info); $i++){
+      if ($info[$i]['available'] == 1 && $info[$i]['price'] <= 11990000){
+        echo '<pre>';
+        print_r($info[$i]);
+        echo '/<pre>';
+      }
+    }
 
     curl_close($ch);
 
