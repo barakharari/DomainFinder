@@ -27,11 +27,16 @@
     $dn = json_decode($result, true);
     $info = $dn['domains'];
 
-    for ($i = 0; $i <= sizeof($info); $i++){
+    $i = 0;
+
+    //filter the results you want
+
+    for (; $i <= 60 || $i == sizeof($words); $i++){
       if ($info[$i]['available'] == 1 && $info[$i]['price'] <= 11990000){
         echo '<pre>';
         print_r($info[$i]);
         echo '/<pre>';
+        $i += 1;
       }
     }
 

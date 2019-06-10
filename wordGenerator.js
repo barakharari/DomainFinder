@@ -1,8 +1,8 @@
-const connectors = ['bythe', 'about', 'atthe', 'likethe', 'of', 'onto', 'on', 'to', 'with', 'withthe', 'like', 'by', 'outof']
-const starters = ['after', 'because', 'before', 'if', 'and', 'till', 'when', '100', '101']
-const enders = ['me', 'we', 'us', 'you', 'she', 'her', 'he', 'him', 'it', 'they', 'them']
+const connectors = ['atthe', 'likethe', 'likeits', 'it', 'of', 'onto', 'on', 'to', 'outof', 'with', 'withthe', 'like', 'by', 'outof', 'but', 'also', 'so', 'and', 'asif', 'unlike', '', '', '']
+const starters = ['the', 'this', 'do', 'make', 'if', 'we', 'some', 'another', 'favorite', 'prefer', 'first', 'next', 'soon', 'finally', 'when', '100', '101', '', '', '']
+const enders = ['shop', 'store', 'buy', '', '']
 
-var keywords = []
+var keywords = ['']
 
 
 function processInput(){
@@ -16,19 +16,19 @@ function processInput(){
   var relatedWords = []
 
   keywords.forEach((word) => {
-    fetchFromAPI("https://api.datamuse.com/words?rel_jja=" + word, function(response){
+    dataMuseAPI("https://api.datamuse.com/words?rel_jja=" + word, function(response){
       relatedWords.push(...response);
       index++;
       if (index === keywords.length){
         //Collected all related words from keywords, store them in "domainWords"
         handleRelatedWords(relatedWords);
       }
-    }); // site that doesn’t send Access-Control-*
+    }); 
   });
 
 }
 
-function fetchFromAPI(url, callback){
+function dataMuseAPI(url, callback){
   fetch(url) 
   .then(response => response.text())
   .then(response => {
@@ -41,7 +41,8 @@ function fetchFromAPI(url, callback){
 function getWords(words){
   retVal = [];
   var i = 0;
-  while (i < 20 && i != words.length){
+
+  while (i < 15 && i != words.length){
     retVal.push(words[i]["word"])
     i++;
   }
@@ -70,16 +71,34 @@ function handleRelatedWords(relatedWords){
 
   //RANDOM INSERTION
 
-  while (domains.length < 60){
-    if (relatedWords.length === 1){
-      domains = relatedWords[0];
+  while (domains.length < 120){
+    var word;
+    switch(rand(6)){
+      case 0:
+        word = starters[rand(starters.length)] + keywords[rand(keywords.length)] + connectors[rand(connectors.length)] + relatedWords[rand(relatedWords.length)];
+        break;
+      case 1:
+      word = keywords[rand(keywords.length)] + connectors[rand(connectors.length)] + relatedWords[rand(relatedWords.length)] + enders[rand(enders.length)];
+        break;
+      case 2:
+      word = starters[rand(starters.length)] + relatedWords[rand(relatedWords.length)] + connectors[rand(connectors.length)] + keywords[rand(keywords.length)];
+        break;
+      case 3:
+      word = relatedWords[rand(relatedWords.length)] + connectors[rand(connectors.length)] + keywords[rand(keywords.length)];
+        break;
+      case 4:
+      word = relatedWords[rand(relatedWords.length)] + keywords[rand(keywords.length)];
+      break;
+      case 5:
+      word = keywords[rand(keywords.length)] + relatedWords[rand(relatedWords.length)];
       break;
     }
-
-    domains.push(relatedWords[rand(relatedWords.length)] + relatedWords[rand(relatedWords.length)] + '.com')
+    domains.push(word + '.com')
   }
 
+  // console.log(domains)
 
+  //Send the domains to the PHP script
   sendDomains(domains)
 }
 
