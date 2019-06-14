@@ -5,13 +5,31 @@ const enders = ['shop', 'store', 'buy', '', '']
 var keywords = ['']
 
 
-function processInput(){
+function validate() {
+  var returnMessage;
+  input = document.getElementById("keywords").value;
+
+  var onlyThreeWords = /^(?:\w+\W+){0,1}(?:\w+)$/.test(input);
+  var noNumbers = /(?:[\d]+ ){0,2}[\d]+/.test(input);
+  var noSpecialChars = /\/\W|_/g.test(input);
+
+  if (onlyThreeWords === true && noNumbers === false && noSpecialChars === false) {
+    document.getElementById("returnMessage").style.color = "MediumSeaGreen";
+    returnMessage = "Input valid"
+    processInput(input)
+  } else {
+    document.getElementById("returnMessage").style.color = "red";
+    returnMessage = "Input invalid: please make sure you are meeting the input conditions";
+  }
+  document.getElementById("returnMessage").innerHTML = returnMessage;
+}
+
+
+function processInput(input){
 
   // Get a price range
 
-  const keywordsString = document.getElementById("keywords").value
-
-  keywords = keywordsString.split(" ");
+  keywords = input.split(" ");
   var index = 0
   var relatedWords = []
 
