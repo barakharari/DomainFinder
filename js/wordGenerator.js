@@ -16,7 +16,8 @@ $(document).ready(function(){
     if (onlyThreeWords === true && noNumbers === false && noSpecialChars === false) {
       document.getElementById("returnMessage").style.color = "MediumSeaGreen";
       returnMessage = "Input valid"
-      processInput(input)
+      // processInput(input)
+      sendNames(input)
     } else {
       document.getElementById("returnMessage").style.color = "red";
       returnMessage = "Input invalid: please make sure you are meeting the input conditions";
@@ -24,6 +25,30 @@ $(document).ready(function(){
     document.getElementById("returnMessage").innerHTML = returnMessage;
   })
 })
+
+function sendNames(keywords){
+  document.getElementById("resultsGrid").innerHTML = ""
+
+  var jsonString = JSON.stringify(keywords)
+
+  $.ajax({
+    url: "php/gdapi.php",
+    type: "POST",
+    dataType:"json",
+    data: {words: jsonString},
+    success: function(res){
+      console.log("Success")
+      console.log(res)
+      for (i = 0; i < res.length; i++){
+        outputToDOM(res[i])
+      }
+
+    },
+    error: function(){
+      alert("Something went wrong...")
+    }
+  });
+}
 
 function processInput(input){
 
@@ -47,9 +72,7 @@ function processInput(input){
 
 function dataMuseAPI(url, callback){
 
-  fetch(url, {
-    "Access-Control-Allow-Origin": "*"
-  })
+  fetch(url)
   .then(response => response.text())
   .then(response => {
     return callback(getWords(JSON.parse(response)));
@@ -102,7 +125,7 @@ function sendDomains(domainNames){
   document.getElementById("resultsGrid").innerHTML = ""
 
   var jsonString = JSON.stringify(domainNames)
-  var info = $.ajax({
+  $.ajax({
     url: "php/gdapi.php",
     type: "POST",
     dataType:"json",
@@ -117,7 +140,7 @@ function sendDomains(domainNames){
     error: function(){
       alert("Something went wrong...")
     }
-  }).responeText;
+  });
 }
 
 ///////////////////////////////////////////
