@@ -4,8 +4,9 @@
     <title>Domain Finder</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/wordGenerator.js"></script>
+    <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="css/grid.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
@@ -15,23 +16,34 @@
       <h1>Domain Finder</h1>
       <h4>Make sure your input meets the following criteria:</h4>
       <ul id="rules">
-        <li>Input as many keywords as you want (the more specific the better)</li>
-        <li>Words must be separated by spaces</li>
-        <li>Must contain only letters (no numbers or special characters)</li>
+        <li>Enter each keyword one by one (the more specific the better)</li>
+        <li>Keywords must contain only letters (no numbers or special characters)</li>
+        <li>Press submit when ready for domains!</li>
       </ul>
-      <input id="keywords" placeholder="Enter your keywords...">
-      <button type="button" id="submit">Submit</button>
-      <div id="returnMessage"></div>
+      <input id="keywords" placeholder="Enter a keyword...">
+
     </div>
+
+    <div id ="chosenWords">
+      <ul id="chosenWordsGrid">
+        <!-- <li><button type="button" class="cancelWord">x</button><p>word1</p></li>
+        <li><button type="button" class="cancelWord">x</button><p>word1</p></li>
+        <li><p>word1</p></li> -->
+      </ul>
+    </div>
+    <button type="button" id="submit">Submit</button>
+    <div id="returnMessage"></div>
+
+
 
     <div id="results">
 
       <ul id="resultsGrid" class="grid">
-        <!-- <li class="width-12-12-m width-4-12" style="background-color:blue">
+        <!-- <li class="width-12-12-m width-4-12 domain" style="background-color:blue">
           <h3 class="name">testtestestestestest</h3>
           <p class="price">test</p>
         </li>
-        <li class="width-12-12-m width-4-12">
+        <li class="width-12-12-m width-4-12 domain">
           <h3 class="name">testtestestestestest</h3>
           <p class="price">test</p>
         </li> -->
