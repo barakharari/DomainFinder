@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Domain Finder</title>
+    <title>Not So Basic</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -13,12 +13,12 @@
   <body>
   <div id="wrapper" class="center">
     <div id="main">
-      <h1>Domain Finder</h1>
-      <h4>Make sure your input meets the following criteria:</h4>
+      <h1>The "One-Stop-Shop" for Unique URLs</h1>
+      <h4>Describe your site/business:</h4>
       <ul id="rules">
         <li>Enter each keyword one by one (the more specific the better)</li>
         <li>Keywords must contain only letters (no numbers or special characters)</li>
-        <li>Press submit when ready for domains!</li>
+        <li>Press submit when ready for available domains!</li>
       </ul>
       <input id="keywords" placeholder="Enter a keyword...">
 
