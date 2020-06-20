@@ -3,56 +3,44 @@
   <head>
     <title>Domain Finder</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="wordGenerator.js"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-      body {
-        font-family: 'Roboto Mono', monospace;
-        font-size: 0.8em;
-      }
-      #container {
-        margin: auto;
-        width: 600px;
-        margin-top: 10%;
-      }
-      input, button {
-        font-family: inherit;
-        font-size: inherit;
-      }
-      button {
-        font-weight: 600;
-      }
-
-      #returnMessage {
-        font-size: 0.5em;
-        margin-top: 5px;
-      }
-      input:focus, textarea:focus{
-        background-color: #F7EAFF;
-
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/wordGenerator.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-  <div id="container">
+  <div id="wrapper" class="center">
+    <div id="main">
+      <h1>Domain Finder</h1>
+      <h4>Make sure your input meets the following criteria:</h4>
+      <ul id="rules">
+        <li>Max three words long with no added spaces</li>
+        <li>Words must be separated by spaces</li>
+        <li>Must contain only letters (no numbers or special characters)</li>
+      </ul>
+      <input id="keywords" placeholder="Enter your keywords...">
+      <button type="button" id="submit">Submit</button>
+      <div id="returnMessage"></div>
+    </div>
 
-    <h1>Domain Ideas</h1>
+    <div id="results">
 
-    <p>Make sure your input meets the following criteria:</p>
-    <ul>
-      <li>Max three words long with no added spaces</li>
-      <li>Words must be separated by spaces</li>
-      <li>Must contain only letters (no numbers or special characters)</li>
-    </ul>
+      <ul id="resultsGrid" class="grid">
+        <!-- <li class="width-12-12-m width-4-12" style="background-color:blue">
+          <h3 class="name">testtestestestestest</h3>
+          <p class="price">test</p>
+        </li>
+        <li class="width-12-12-m width-4-12">
+          <h3 class="name">testtestestestestest</h3>
+          <p class="price">test</p>
+        </li> -->
+      </ul>
 
-    <input id="keywords" placeholder="Enter your keywords...">
-
-    <button type="button" onclick=validate()>Submit</button>
-
-    <p id="returnMessage"></p>
-    <br>
-    <div id="results"></div>
+    </div>
+    <div id="footer">
+      <p>Copyright © 2020 · Barak Harari & Asaf Harari</p>
+    </div>
   </div>
   </body>
 

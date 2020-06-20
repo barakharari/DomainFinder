@@ -4,26 +4,26 @@ const enders = ['shop', 'store', 'buy', '', '']
 
 var keywords = ['']
 
+$(document).ready(function(){
+  $("button").click(function(){
+    var returnMessage;
+    input = document.getElementById("keywords").value;
 
-function validate() {
-  var returnMessage;
-  input = document.getElementById("keywords").value;
+    var onlyThreeWords = /^(?:\w+\W+){0,2}(?:\w+)$/.test(input);
+    var noNumbers = /(?:[\d]+ ){0,2}[\d]+/.test(input);
+    var noSpecialChars = /\/\W|_/g.test(input);
 
-  var onlyThreeWords = /^(?:\w+\W+){0,1}(?:\w+)$/.test(input);
-  var noNumbers = /(?:[\d]+ ){0,2}[\d]+/.test(input);
-  var noSpecialChars = /\/\W|_/g.test(input);
-
-  if (onlyThreeWords === true && noNumbers === false && noSpecialChars === false) {
-    document.getElementById("returnMessage").style.color = "MediumSeaGreen";
-    returnMessage = "Input valid"
-    processInput(input)
-  } else {
-    document.getElementById("returnMessage").style.color = "red";
-    returnMessage = "Input invalid: please make sure you are meeting the input conditions";
-  }
-  document.getElementById("returnMessage").innerHTML = returnMessage;
-}
-
+    if (onlyThreeWords === true && noNumbers === false && noSpecialChars === false) {
+      document.getElementById("returnMessage").style.color = "MediumSeaGreen";
+      returnMessage = "Input valid"
+      processInput(input)
+    } else {
+      document.getElementById("returnMessage").style.color = "red";
+      returnMessage = "Input invalid: please make sure you are meeting the input conditions";
+    }
+    document.getElementById("returnMessage").innerHTML = returnMessage;
+  })
+})
 
 function processInput(input){
 
@@ -41,13 +41,12 @@ function processInput(input){
         //Collected all related words from keywords, store them in "domainWords"
         handleRelatedWords(relatedWords);
       }
-    }); 
+    });
   });
-
 }
 
 function dataMuseAPI(url, callback){
-  fetch(url) 
+  fetch(url)
   .then(response => response.text())
   .then(response => {
     return callback(getWords(JSON.parse(response)));
@@ -67,17 +66,55 @@ function getWords(words){
   return retVal;
 }
 
+function outputToDOM(info){
+
+  r = Math.floor(Math.random() * 255)
+  b = Math.floor(Math.random() * 255)
+  g = Math.floor(Math.random() * 255)
+
+  console.log("r:" + r + "b:" + b + "g:" + g)
+
+  color = "#eee"
+
+  if (r > 50 && g > 50){
+    color = "#000"
+  }
+
+  var name = info.name
+  var price = info.price.toString().substring(0,4)
+  price = price.substring(0,2) + "." + price.substring(2,4)
+
+  document.getElementById("resultsGrid").innerHTML +=
+    `<li class='width-12-12-m width-4-12' style="background-color:rgb(${r},${g},${b}); color:${color}">
+      <a target="_blank" href="https://www.godaddy.com/domainsearch/find?segment=repeat&checkAvail=1&tmskey=&domainToCheck=${name}">
+        <h3 class="name">Domain: ${name}</h3>
+        <p class="price">Price: $${price}</p>
+      </a>
+    </li>`
+  document.getElementById("footer").style.position = "static"
+}
+
 function sendDomains(domainNames){
+
+  document.getElementById("resultsGrid").innerHTML = ""
+
   var jsonString = JSON.stringify(domainNames)
-  $.ajax({
-    url: "gdapi.php",
-    type: "post",
+  var info = $.ajax({
+    url: "php/gdapi.php",
+    type: "POST",
+    dataType:"json",
     data: {words: jsonString},
     success: function(res){
-      //Here you could organize the response from godaddy api
-      document.getElementById("results").innerHTML = res
+      console.log("Success")
+      for (i = 0; i < res.length; i++){
+        outputToDOM(res[i])
+      }
+
+    },
+    error: function(){
+      alert("Something went wrong...")
     }
-  });
+  }).responeText;
 }
 
 ///////////////////////////////////////////
@@ -85,6 +122,7 @@ function sendDomains(domainNames){
 ///////////////////////////////////////////
 
 function handleRelatedWords(relatedWords){
+
   var domains = [];
 
   //RANDOM INSERTION

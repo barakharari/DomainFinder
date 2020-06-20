@@ -1,0 +1,92 @@
+h1{
+  font-size: 35px;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  background: #e8e4e1;
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#wrapper {
+  margin: 1rem auto 0rem auto;
+  padding: 2rem 2rem;
+  padding-bottom: 0rem;
+  max-width: 1000px;
+}
+
+#rules li{
+  margin-top: 10px;
+}
+
+#returnMessage {
+  font-size: .8rem;
+  margin-top: 10px;
+}
+
+input:focus{
+  background-color: #F7EAFF;
+}
+
+input, button {
+  margin-top: 10px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  font-weight: 600;
+}
+
+#results{
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+#results ul {
+  list-style: none;
+  align-items: center;
+}
+
+a{
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.grid li {
+  color: #000;
+  border-radius: .5rem;
+  border-width: 10px;
+  border: solid;
+  border-color: #000;
+  text-align: center;
+  margin: 0;
+  height: 100%;
+}
+
+.grid li:hover{
+  opacity: .5;
+}
+
+.name{
+  display: block;
+  word-wrap: break-word;
+  padding: 2rem;
+}
+
+.price{
+  padding-bottom: 1rem;
+}
+
+#footer{
+  position: fixed;
+  justify-content: center;
+  bottom: 10px;
+  font-size: 14px;
+}
