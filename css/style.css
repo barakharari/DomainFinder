@@ -17,7 +17,7 @@ body {
 #wrapper {
   margin: 1rem auto 0rem auto;
   padding: 2rem 2rem;
-  padding-bottom: 0rem;
+  padding-bottom: 2rem;
   max-width: 1000px;
 }
 
@@ -45,8 +45,8 @@ button {
 }
 
 #results{
+  margin: 2rem;
   margin-top: 2.5rem;
-  margin-bottom: 2rem;
 }
 
 #results ul {

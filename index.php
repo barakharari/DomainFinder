@@ -15,7 +15,7 @@
       <h1>Domain Finder</h1>
       <h4>Make sure your input meets the following criteria:</h4>
       <ul id="rules">
-        <li>Max three words long with no added spaces</li>
+        <li>Input as many keywords as you want (the more specific the better)</li>
         <li>Words must be separated by spaces</li>
         <li>Must contain only letters (no numbers or special characters)</li>
       </ul>
