@@ -40,7 +40,7 @@ $(document).ready(function(){
         if (words.length == 0){$("#submit").css("opacity", 1)}
 
         input = document.getElementById("keywords").value;
-        if (checkInput(input) != null){
+        if (checkInput(input) != 0){
           words.push(input)
           document.getElementById("chosenWordsGrid").innerHTML +=
           `<li class="width-4-12-m width-2-12"><button type="button" class="cancelWord">x</button><p>${input}</p></li>`
@@ -51,20 +51,19 @@ $(document).ready(function(){
 })
 
 function checkInput(input){
-  var onlyThreeWords = /([\w\W]\s)+/.test(input);
-  var noNumbers = /(?:[\d]+ ){0,2}[\d]+/.test(input);
-  var noSpecialChars = /\/\W|_/g.test(input);
+  var oneWord = /[\w\W]/.test(input);
+  var noSpecialChars = /[!@#$%^&*':\(\)\s\d]/.test(input);
 
-  // if (onlyThreeWords === true && noNumbers === false && noSpecialChars === false) {
-  //   document.getElementById("returnMessage").style.color = "MediumSeaGreen";
-  //   returnMessage = "Input valid"
-  //   // processInput(input)
-  // } else {
-  //   document.getElementById("returnMessage").style.color = "red";
-  //   returnMessage = "Input invalid: please make sure you are meeting the input conditions";
-  //   document.getElementById("returnMessage").innerHTML = returnMessage;
-  // }
-  return 5
+  if (oneWord === true && noSpecialChars === false) {
+    document.getElementById("returnMessage").innerHTML = "";
+    return 1
+  } else {
+    document.getElementById("returnMessage").style.color = "red";
+    returnMessage = "Input invalid: please make sure you are meeting the input conditions";
+    document.getElementById("returnMessage").innerHTML = returnMessage;
+    return 0
+  }
+
 }
 
 function sendNames(keywords){
