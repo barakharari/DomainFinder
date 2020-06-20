@@ -23,10 +23,13 @@ $(document).ready(function(){
 
     for (i = 0; i < words.length; i++){
       if (words[i] == name){
-        words.splice(i)
+        console.log("deleting")
+        words.splice(i, 1)
         break
       }
     }
+
+    console.log(words)
 
     if (words.length == 0){$("#submit").css("opacity", 0)}
 
@@ -38,11 +41,16 @@ $(document).ready(function(){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
 
+
+
         if (words.length == 0){$("#submit").css("opacity", 1)}
 
         input = document.getElementById("keywords").value;
         if (checkInput(input) != 0){
           words.push(input)
+
+          console.log(words)
+
           document.getElementById("chosenWordsGrid").innerHTML +=
           `<li class="width-4-12-m width-2-12"><button type="button" class="cancelWord">x</button><p>${input}</p></li>`
           this.value = ""
