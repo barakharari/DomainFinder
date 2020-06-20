@@ -17,7 +17,7 @@ $(document).ready(function(){
       document.getElementById("returnMessage").style.color = "MediumSeaGreen";
       returnMessage = "Input valid"
       // processInput(input)
-      sendNames(input)
+      sendNames(input.split(" "))
     } else {
       document.getElementById("returnMessage").style.color = "red";
       returnMessage = "Input invalid: please make sure you are meeting the input conditions";
@@ -29,13 +29,11 @@ $(document).ready(function(){
 function sendNames(keywords){
   document.getElementById("resultsGrid").innerHTML = ""
 
-  var jsonString = JSON.stringify(keywords)
-
   $.ajax({
     url: "php/gdapi.php",
     type: "POST",
     dataType:"json",
-    data: {words: jsonString},
+    data: {words: keywords},
     success: function(res){
       console.log("Success")
       console.log(res)
@@ -124,12 +122,12 @@ function sendDomains(domainNames){
 
   document.getElementById("resultsGrid").innerHTML = ""
 
-  var jsonString = JSON.stringify(domainNames)
   $.ajax({
     url: "php/gdapi.php",
     type: "POST",
     dataType:"json",
-    data: {words: jsonString},
+    contentType:"application/json",
+    data: {words: domainNames},
     success: function(res){
       console.log("Success")
       for (i = 0; i < res.length; i++){
