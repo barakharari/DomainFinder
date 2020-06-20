@@ -47,13 +47,9 @@ function processInput(input){
 
 function dataMuseAPI(url, callback){
 
-  const options = {
-    method: method,
-    headers: new Headers({'content-type': 'application/json'}),
-    mode: 'no-cors'
-  };
-  
-  fetch(url, options)
+  fetch(url, {
+    "Access-Control-Allow-Origin": "*"
+  })
   .then(response => response.text())
   .then(response => {
     return callback(getWords(JSON.parse(response)));
