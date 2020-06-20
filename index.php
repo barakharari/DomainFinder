@@ -34,7 +34,7 @@
     <button type="button" id="submit">Submit</button>
     <div id="returnMessage"></div>
 
-
+    <div id="loader"></div>
 
     <div id="results">
 

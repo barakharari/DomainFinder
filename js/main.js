@@ -12,6 +12,9 @@ $(document).ready(function(){
     var returnMessage;
     input = document.getElementById("keywords").value;
 
+    document.getElementById("loader").style.animation = "spin 1s linear infinite"
+    document.getElementById("loader").style.opacity = 1
+
     sendNames(words)
   })
 
@@ -24,8 +27,6 @@ $(document).ready(function(){
         break
       }
     }
-
-    console.log(words)
 
     if (words.length == 0){$("#submit").css("opacity", 0)}
 
@@ -76,6 +77,10 @@ function sendNames(keywords){
     data: {words: keywords},
     success: function(res){
       console.log("Success")
+
+      document.getElementById("loader").style.animation = ""
+      document.getElementById("loader").style.opacity = 0
+
       console.log(res)
       for (i = 0; i < res.length; i++){
         outputToDOM(res[i])

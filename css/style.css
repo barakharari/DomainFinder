@@ -31,6 +31,7 @@ body {
 
 #submit{
   opacity: 0;
+  padding: 10px 20px;
 }
 
 #returnMessage {
@@ -140,6 +141,21 @@ a{
 
 .price{
   padding-bottom: 1rem;
+}
+
+#loader {
+  margin-top: 20px;
+  border: 7px solid #e7dfd5; /* Light grey */
+  border-top: 7px solid #F7EAFF; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 #footer{
