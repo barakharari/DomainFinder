@@ -4,7 +4,7 @@
 
   //Data
   $words = $_POST['words'];
-  $urls = getDomains(getRelatedWords($words), $words);
+  $urls = getDomains(getRelatedAdjectives($words), getRelatedWords($words), $words);
 
   $domains = [];
 
