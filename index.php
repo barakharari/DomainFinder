@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Not So Basic</title>
+    <title>Uncommon URLs</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
 
     </div>
     <div id="footer">
-      <p>Copyright © 2020 · Barak Harari & Asaf Harari</p>
+      <p>Copyright © 2020 · Barak Harari</p>
     </div>
   </div>
   </body>
