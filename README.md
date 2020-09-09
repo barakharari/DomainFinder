@@ -1,3 +1,6 @@
+Update 9/9/20:
+Website is live! Check it out at: http://www.uncommonurls.com/
+
 # DomainFinder
 Web app where users can find available domains for their websites based on keywords they give
 
